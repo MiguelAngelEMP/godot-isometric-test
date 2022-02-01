@@ -1,0 +1,140 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/NinePatchRect_Texture.tres" type="Texture" id=1]
+[ext_resource path="res://scenes/UI_Theme.tres" type="Theme" id=2]
+[ext_resource path="res://scripts/MainMenu_UI.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFontData" id=1]
+antialiased = false
+font_path = "res://assets/fonts/PressStart2P.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 1 )
+
+[node name="MainMenu" type="Node"]
+
+[node name="MainMenu_UI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuButtons" type="VBoxContainer" parent="MainMenu_UI"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -75.0
+margin_right = 200.0
+margin_bottom = 75.0
+custom_constants/separation = 10
+alignment = 1
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="PanelStartDemo" type="NinePatchRect" parent="MainMenu_UI/MenuButtons"]
+margin_right = 400.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 1 )
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonNewGame" type="Button" parent="MainMenu_UI/MenuButtons/PanelStartDemo"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = 3.0
+margin_right = -3.0
+margin_bottom = -3.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Start Demo"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelCloseDemo" type="NinePatchRect" parent="MainMenu_UI/MenuButtons"]
+margin_top = 80.0
+margin_right = 400.0
+margin_bottom = 150.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 1 )
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonCloseGame" type="Button" parent="MainMenu_UI/MenuButtons/PanelCloseDemo"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = 3.0
+margin_right = -3.0
+margin_bottom = -3.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Exit"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="MainMenu_UI"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -304.0
+margin_top = -152.879
+margin_right = 304.0
+margin_bottom = -120.879
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Isometric Game Test"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MainMenu_UI/Label2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -304.0
+margin_top = -21.0
+margin_right = 304.0
+margin_bottom = 11.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "Isometric Game Test"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="MainMenu_UI/MenuButtons/PanelStartDemo/ButtonNewGame" to="MainMenu_UI" method="_on_ButtonNewGame_pressed"]
+[connection signal="pressed" from="MainMenu_UI/MenuButtons/PanelCloseDemo/ButtonCloseGame" to="MainMenu_UI" method="_on_ButtonCloseGame_pressed"]

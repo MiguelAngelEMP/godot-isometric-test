@@ -1,0 +1,274 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scripts/LabelCoordinates.gd" type="Script" id=1]
+[ext_resource path="res://assets/ui.png" type="Texture" id=2]
+[ext_resource path="res://scenes/NinePatchRect_Texture.tres" type="Texture" id=3]
+[ext_resource path="res://scripts/UI.gd" type="Script" id=4]
+[ext_resource path="res://scenes/UI_Theme.tres" type="Theme" id=5]
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 16
+corner_radius_bottom_right = 16
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 32, 8, 8 )
+
+[node name="UI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 5 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="PanelCoordinates" type="Panel" parent="."]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 170.0
+margin_bottom = 45.0
+custom_styles/panel = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelCoordinates" type="Label" parent="PanelCoordinates"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 4.0
+text = "(99, 99)"
+align = 1
+valign = 1
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": "
+"
+}
+
+[node name="PanelInfo" type="Panel" parent="."]
+margin_left = 190.0
+margin_top = 10.0
+margin_right = 510.0
+margin_bottom = 45.0
+custom_styles/panel = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelInfo" type="Label" parent="PanelInfo"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 4.0
+text = "Press R to reset"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": "
+"
+}
+
+[node name="UnitPanels" type="Control" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -200.0
+margin_top = -10.0
+margin_right = -200.0
+margin_bottom = -10.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="PanelStats" type="NinePatchRect" parent="UnitPanels"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -90.0
+margin_right = 190.0
+texture = ExtResource( 3 )
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="UnitPanels/PanelStats"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LifeLabel" type="Label" parent="UnitPanels/PanelStats/GridContainer"]
+margin_top = 3.0
+margin_right = 80.0
+margin_bottom = 19.0
+size_flags_horizontal = 2
+size_flags_vertical = 6
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Life:"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LifeValues" type="Label" parent="UnitPanels/PanelStats/GridContainer"]
+margin_left = 89.0
+margin_top = 3.0
+margin_right = 169.0
+margin_bottom = 19.0
+size_flags_horizontal = 2
+size_flags_vertical = 6
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "10/10"
+
+[node name="MPLabel" type="Label" parent="UnitPanels/PanelStats/GridContainer"]
+margin_top = 29.0
+margin_right = 48.0
+margin_bottom = 45.0
+size_flags_horizontal = 2
+size_flags_vertical = 6
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "MP:"
+align = 2
+
+[node name="MPValues" type="Label" parent="UnitPanels/PanelStats/GridContainer"]
+margin_left = 89.0
+margin_top = 29.0
+margin_right = 153.0
+margin_bottom = 45.0
+size_flags_horizontal = 2
+size_flags_vertical = 6
+custom_colors/font_color = Color( 0, 0.0392157, 1, 1 )
+text = "5/10"
+
+[node name="APLabel" type="Label" parent="UnitPanels/PanelStats/GridContainer"]
+margin_top = 55.0
+margin_right = 48.0
+margin_bottom = 71.0
+size_flags_horizontal = 2
+size_flags_vertical = 6
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "AP:"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="APValues" type="Label" parent="UnitPanels/PanelStats/GridContainer"]
+margin_left = 89.0
+margin_top = 55.0
+margin_right = 153.0
+margin_bottom = 71.0
+size_flags_horizontal = 0
+size_flags_vertical = 6
+custom_colors/font_color = Color( 0.0470588, 0.576471, 0, 1 )
+text = "5/10"
+
+[node name="PanelAvatar" type="NinePatchRect" parent="UnitPanels"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -135.0
+margin_right = 40.0
+margin_bottom = -95.0
+texture = ExtResource( 3 )
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="TextureAvatar" type="TextureRect" parent="UnitPanels/PanelAvatar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+texture = SubResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelName" type="NinePatchRect" parent="UnitPanels"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 45.0
+margin_top = -135.0
+margin_right = 190.0
+margin_bottom = -95.0
+texture = ExtResource( 3 )
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="LabelUnitName" type="Label" parent="UnitPanels/PanelName"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Unit 1"
+valign = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelTurn" type="NinePatchRect" parent="UnitPanels"]
+margin_top = -170.0
+margin_right = 190.0
+margin_bottom = -140.0
+texture = ExtResource( 3 )
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ButtonPassTurn" type="Button" parent="UnitPanels/PanelTurn"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = 3.0
+margin_right = -3.0
+margin_bottom = -3.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Pass Turn"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
